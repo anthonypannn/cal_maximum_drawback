@@ -111,5 +111,6 @@ cal_maximum_drawdown/
 
 ## 作者
 
-申万宏源
+Jingrui Pan
+anthonypannn@gmail.com
 
