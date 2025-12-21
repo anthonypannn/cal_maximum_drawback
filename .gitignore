@@ -1,0 +1,29 @@
+# 忽略 data 文件夹中的所有内容，但保留占位符
+data/*
+!data/.gitkeep
+
+# 忽略 output 文件夹中的所有内容，但保留占位符
+output/*
+!output/.gitkeep
+
+# Python 相关
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 系统文件
+.DS_Store
+Thumbs.db
+

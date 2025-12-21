@@ -94,6 +94,13 @@ def calculate_yearly_drawdown(df, date_col, price_col, freq='D'):
         group_df = group_df.set_index(date_col)
         price_series = group_df[price_col]
         
+        # 数据清洗：剔除值为0的数据（0表示该时点指数数据还未出现）
+        price_series = price_series[price_series != 0]
+        
+        # 如果清洗后数据不足，跳过该年
+        if len(price_series) < 2:
+            continue
+        
         # 计算回撤
         drawdown, cummax = calculate_drawdown(price_series)
         
@@ -141,7 +148,7 @@ def process_all_indices(input_file, output_dir='output', freq='D'):
     
     # 生成输出文件名
     timestamp = datetime.now().strftime('%Y%m%d')
-    output_file = os.path.join(output_dir, f'指数回撤分析结果_{timestamp}.xlsx')
+    output_file = os.path.join(output_dir, f'{input_file.split("/")[-1].split(".")[0]}_指数回撤分析结果_{timestamp}.xlsx')
     
     # 创建Excel写入器
     print(f"开始计算各指数的年度最大回撤...")
@@ -179,7 +186,7 @@ def main():
     主函数
     """
     # 配置参数
-    input_file = 'data/快照 股指收益率.xlsx'  # 输入文件路径
+    input_file = 'data/快照 全球价格指数（更新到12月18日）.xlsx'  # 输入文件路径
     output_dir = 'output'  # 输出目录
     freq = 'D'  # 数据频率：'D'=日, 'W'=周, 'M'=月
     
