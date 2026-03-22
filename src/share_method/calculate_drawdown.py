@@ -186,7 +186,7 @@ def main():
     主函数
     """
     # 配置参数
-    input_file = 'data/快照 全球价格指数（更新到12月18日）.xlsx'  # 输入文件路径
+    input_file = 'data/SPX.GI.xlsx'   # 输入文件路径
     output_dir = 'output'  # 输出目录
     freq = 'D'  # 数据频率：'D'=日, 'W'=周, 'M'=月
     
